@@ -18,7 +18,9 @@ function App() {
           <div className="container">
             <ShareScoreProvider>
               <Route exact path="/" component={Home}/>
-              <Route exact path="/team-a" component={TeamA}/>
+              <Route exact path="/team-a"
+                     render={props => <TeamA {...props} />}
+              />
               <Route exact path="/team-b" component={TeamB}/>
             </ShareScoreProvider>
           </div>

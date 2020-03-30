@@ -1,9 +1,10 @@
 import React, {useContext} from "react";
-import {withRouter} from "react-router-dom";
+import {withRouter, useHistory} from "react-router-dom";
 import {ShareScore} from "./ShareScore";
 
-function TeamA({history}) {
+function TeamA() {
   const {score, setScore} = useContext(ShareScore);
+  const history = useHistory();
 
   function onBackHome(event) {
     event.preventDefault();
@@ -51,8 +52,6 @@ function TeamA({history}) {
           Back Home
         </button>
       </div>
-
-
 
       <hr className="bg-success mt-4"/>
 
