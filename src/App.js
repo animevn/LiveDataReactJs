@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./templates/Header"
 import Footer from "./templates/Footer";
 import Home from "./home/Home";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import {Route, BrowserRouter} from "react-router-dom";
 import TeamA from "./home/TeamA";
 import {ShareScoreProvider} from "./home/ShareScore";
@@ -9,13 +11,11 @@ import TeamB from "./home/TeamB";
 
 function App() {
   return (
-    <div className="main">
-      <div className="container-fluid px-0">
+    <Box display="flex" flexDirection="column" justifyContent="space-between" minHeight="100vh">
+      <Grid>
         <Header/>
-
-        {/*app goes in here*/}
+        {/*app body goes down here*/}
         <BrowserRouter>
-          <div className="container">
             <ShareScoreProvider>
               <Route exact path="/" component={Home}/>
               <Route exact path="/team-a"
@@ -23,12 +23,11 @@ function App() {
               />
               <Route exact path="/team-b" component={TeamB}/>
             </ShareScoreProvider>
-          </div>
         </BrowserRouter>
-
-      </div>
+        {/*app body goes up here hahaha */}
+      </Grid>
       <Footer/>
-    </div>
+    </Box>
   );
 }
 
