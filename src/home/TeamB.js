@@ -1,8 +1,14 @@
 import React, {useContext} from "react";
 import {withRouter, useHistory} from "react-router-dom";
 import {ShareScore} from "./ShareScore";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 
 function TeamB() {
+  const width = {xs:11, sm:8, md:6, lg:5, xl:4};
   const {score, setScore} = useContext(ShareScore);
   let history = useHistory();
 
@@ -28,34 +34,64 @@ function TeamB() {
   }
 
   return (
-    <div className="container mt-5 col-xl-6 col-lg-6 col-md-9 col-sm-11 col-11">
-      <h2 className="text-success text-center">Scores</h2>
-      <hr className="bg-success"/>
-      <h3 className="text-success text-center mt-1">Team A</h3>
-      <h3 className="text-success text-center my-5">{score.scoreB}</h3>
+    <Grid container direction="row" justify="center">
+      <Grid item {...width}>
+        <Box display="flex" flexDirection="row" justifyContent="center" my={2} >
+          <Typography component="div" variant="h4">
+            <Box fontWeight="fontWeightBold" color="secondary.main">
+              Scores
+            </Box>
+          </Typography>
+        </Box>
 
-      <div className="container mx-auto d-flex justify-content-around">
-        <button className="btn btn-outline-success" style={{"width":"39%"}}
-                onClick={onIncrease}>
-          Increase
-        </button>
+        <Box display="flex" flexDirection="row" justifyContent="center" my={3}>
+          <Divider style={{"backgroundColor":"red", "width":"90%"}}/>
+        </Box>
 
-        <button className="btn btn-outline-success" style={{"width":"39%"}}
-                onClick={onDecrease}>
-          Decrease
-        </button>
-      </div>
+        <Box display="flex"
+             flexDirection="column"
+             alignItems="center"
+             width={1}>
 
-      <div className="container mx-auto d-flex justify-content-around mt-4">
-        <button className="btn btn-outline-success w-50"
-                onClick={onBackHome}>
-          Back Home
-        </button>
-      </div>
+          <Typography component="div" variant="h4">
+            <Box fontWeight="fontWeightBold" color="green">
+              Team B
+            </Box>
+          </Typography>
 
-      <hr className="bg-success mt-4"/>
+          <Box my={5}>
+            <Typography component="div" variant="h5">
+              <Box fontWeight="fontWeightBold">
+                {score.scoreB}
+              </Box>
+            </Typography>
+          </Box>
+        </Box>
 
-    </div>
+
+        <Box display="flex" flexDirection="row" justifyContent="space-evenly">
+          <Button variant="contained" color="secondary" onClick={onIncrease}>
+            Increase
+          </Button>
+
+          <Button variant="contained" color="secondary" onClick={onDecrease}>
+            Decrease
+          </Button>
+        </Box>
+
+        <Box display="flex" flexDirection="row" justifyContent="center" mt={10}>
+          <Button variant="contained" color="secondary" onClick={onBackHome}>
+            Back Home
+          </Button>
+        </Box>
+
+        <Box display="flex" flexDirection="row" justifyContent="center" my={3}>
+          <Divider style={{"backgroundColor":"red", "width":"90%"}}/>
+        </Box>
+
+      </Grid>
+
+    </Grid>
   )
 }
 
