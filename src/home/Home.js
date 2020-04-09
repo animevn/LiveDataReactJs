@@ -30,7 +30,7 @@ function Home() {
            width={1}>
 
         <Typography component="div" variant="h4">
-          <Box fontWeight="fontWeightBold">
+          <Box fontWeight="fontWeightBold" color="green">
             {team}
           </Box>
         </Typography>
